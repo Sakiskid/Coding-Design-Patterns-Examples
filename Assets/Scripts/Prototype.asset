@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4918a70952d806746a2a2f0ab0d55acb, type: 3}
   m_Name: Prototype
   m_EditorClassIdentifier: 
+  title: Prototype
+  shortDescription: Lets you copy existing objects without having dependencies in
+    their classes.
