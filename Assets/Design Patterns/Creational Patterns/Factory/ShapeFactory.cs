@@ -22,7 +22,7 @@ abstract class ShapeCreator
     /// <returns>string result - the result of which shape was created, along with it's details.</returns>
     public string CreateShape() {
         IShape newShape = FactoryMethod();
-        string result = $"ShapeCreator :: Created new shape ({newShape}). \n\tShape details: {newShape.Details()}";
+        string result = $"ShapeCreator: Created new shape ({newShape}). \n\tShape details: {newShape.Details()}";
         return result;
     }
 }

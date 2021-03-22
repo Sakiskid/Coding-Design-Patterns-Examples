@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Sprites;
 
-public class PrototypeBall : MonoBehaviour, ICloneable
+class PrototypeBall : ICloneable
 {
     SpriteRenderer spriteRenderer;
 
@@ -38,7 +35,15 @@ public class PrototypeBall : MonoBehaviour, ICloneable
         spriteRenderer.color = newColor;
     }
 
-    public void Clone() {
+    protected override ICloneable ShallowCopy() {
+        /* It is my understanding that in Unity C#, there are built in prototype methods (C# has MemberwiseClone, Unity has Instantiation). 
+        This method clones them in a purposefully bulkier way for the purpose of this exercise. */
 
+        // Cloning without using this.MemberwiseClone()
+        PrototypeBall newBall = new PrototypeBall();
+        newBall.red = red;
+        newBall.green = green;
+        newBall.blue = blue;
+        return newBall;
     }
 }
