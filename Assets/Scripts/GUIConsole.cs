@@ -28,6 +28,7 @@ public class GUIConsole : MonoBehaviour
     }
 
     public void Log(string text) {
+        text += "\n";
         consoleText = consoleText.Insert(0, text);
         UpdateGUI();
     }

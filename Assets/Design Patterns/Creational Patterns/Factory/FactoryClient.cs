@@ -5,16 +5,19 @@ using UnityEngine;
 /// </summary>
 public class FactoryClient : MonoBehaviour
 {
+    // Set reference of GUIConsole to current singleton instance
+    GUIConsole guiConsole = GUIConsole.Instance; 
     // Initialize factory creators
     ShapeCreator bouncyBallCreator = new BouncyBallCreator();
     ShapeCreator squareCreator = new SquareCreator();
 
     public void CreateBouncyBall () {
-        Debug.Log("debug creating: " + bouncyBallCreator.CreateShape());
-        GUIConsole.Instance.Log(bouncyBallCreator.CreateShape());
+        string result = bouncyBallCreator.CreateShape();
+        guiConsole.Log(result);
     }
 
     public void CreateSquare () {
-        squareCreator.CreateShape();
+        string result = squareCreator.CreateShape();
+        guiConsole.Log(result);
     }
 }
