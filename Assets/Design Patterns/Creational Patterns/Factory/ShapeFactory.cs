@@ -24,8 +24,7 @@ class SquareCreator : ShapeCreator {
 }
 
 class BouncyBallCreator : ShapeCreator {
-    public override IShape FactoryMethod()
-    {
+    public override IShape FactoryMethod() {
         return new BouncyBall();
     }
 }
