@@ -16,7 +16,7 @@ abstract class ShapeCreator
     /// <remarks>Do NOT use this from the client. Instead, use CreateShape, which will create instances of Concrete Creators</remarks>
     /// </summary>
     /// <returns>Object of type IShape</returns>
-    public abstract IShape FactoryMethod();
+    protected abstract IShape FactoryMethod();
 
     /// <summary>Creates a new IShape shape. Call this method from the client.</summary>
     /// <returns>string result - the result of which shape was created, along with it's details.</returns>
@@ -30,14 +30,14 @@ abstract class ShapeCreator
 /// <summary>Concrete Creator which creates new Shape products. Create a new instance of this on the client to use it!</summary>
 /// <returns>Shape products, using the CreateShape() method</returns>
 class SquareCreator : ShapeCreator {
-    public override IShape FactoryMethod() {
+    protected override IShape FactoryMethod() {
         return new Square();
     }
 }
 
 /// <inheritdoc cref="SquareCreator"/>
 class BouncyBallCreator : ShapeCreator {
-    public override IShape FactoryMethod() {
+    protected override IShape FactoryMethod() {
         return new BouncyBall();
     }
 }
