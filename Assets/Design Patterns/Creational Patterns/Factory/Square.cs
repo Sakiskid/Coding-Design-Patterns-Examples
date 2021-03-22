@@ -5,6 +5,6 @@ using UnityEngine;
 public class Square : IShape
 {
     public string Details() {
-        return "created square";
+        return "Heavy, metal square with sharp corners.";
     }
 }

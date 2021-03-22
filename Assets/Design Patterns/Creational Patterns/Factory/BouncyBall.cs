@@ -5,6 +5,6 @@ using UnityEngine;
 public class BouncyBall : IShape
 {
     public string Details() {
-        return $"{this}";
+        return "Bouncy, round, lightweight red ball toy.";
     }
 }

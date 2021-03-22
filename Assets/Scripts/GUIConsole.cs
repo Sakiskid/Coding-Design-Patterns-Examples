@@ -27,9 +27,17 @@ public class GUIConsole : MonoBehaviour
         if (!textObject) { Debug.LogError("GUI Console :: textObject reference not set!", this.gameObject); }
     }
 
+    /// <summary>
+    /// Log text to the GUI Console to be visualized for the user
+    /// </summary>
+    /// <param name="text">The text to be displayed in the GUIConsole</param>
     public void Log(string text) {
+        // New Line for each log
         text += "\n";
+        // Insert text to be logged
         consoleText = consoleText.Insert(0, text);
+        // Insert timestamp and trim it down
+        consoleText = consoleText.Insert(0, "Time: " + Time.timeAsDouble.ToString().Remove(4) + "\n ");
         UpdateGUI();
     }
 
