@@ -28,8 +28,7 @@ public class GUIConsole : MonoBehaviour
     }
 
     public void Log(string text) {
-        Debug.Log("GUIConsole: inserting text at 0 and updating gui");
-        consoleText.Insert(0, text);
+        consoleText = consoleText.Insert(0, text);
         UpdateGUI();
     }
 

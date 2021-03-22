@@ -10,7 +10,7 @@ public class FactoryClient : MonoBehaviour
     ShapeCreator squareCreator = new SquareCreator();
 
     public void CreateBouncyBall () {
-        Debug.Log("Creating bouncy ball");
+        Debug.Log("debug creating: " + bouncyBallCreator.CreateShape());
         GUIConsole.Instance.Log(bouncyBallCreator.CreateShape());
     }
 
