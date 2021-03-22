@@ -5,11 +5,13 @@ using UnityEngine;
 /// </summary>
 public class FactoryClient : MonoBehaviour
 {
+    // Initialize factory creators
     ShapeCreator bouncyBallCreator = new BouncyBallCreator();
     ShapeCreator squareCreator = new SquareCreator();
 
     public void CreateBouncyBall () {
-        bouncyBallCreator.CreateShape();
+        Debug.Log("Creating bouncy ball");
+        GUIConsole.Instance.Log(bouncyBallCreator.CreateShape());
     }
 
     public void CreateSquare () {
