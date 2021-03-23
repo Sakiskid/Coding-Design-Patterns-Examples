@@ -13,7 +13,6 @@ public interface IShape {
 abstract class ShapeCreator
 {
     /// <summary>Base method for creator, which will be overrided by sub classes (concrete creators).
-    /// <remarks>Do NOT use this from the client. Instead, use CreateShape, which will create instances of Concrete Creators</remarks>
     /// </summary>
     /// <returns>Object of type IShape</returns>
     protected abstract IShape FactoryMethod();
