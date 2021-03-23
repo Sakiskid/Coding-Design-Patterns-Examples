@@ -5,8 +5,9 @@ class PrototypeBall : ICloneable
 {
     SpriteRenderer spriteRenderer;
 
-    private float red, green, blue, mass;
-    private int launchForce = 5;
+    private float red, green, blue;
+    private float mass = 1;
+    private int launchForce = 50;
 
     // Get references to components
     private void Awake() {
@@ -65,6 +66,8 @@ class PrototypeBall : ICloneable
 
         // Cloning using Instantiation:
         GameObject newBall = Instantiate(this.gameObject, gameObject.transform.position, Quaternion.identity);
+
+        // Turning it into a physical object
         Rigidbody2D newBallRb2d = newBall.GetComponent<Rigidbody2D>();
         newBallRb2d.simulated = true;
         newBallRb2d.AddForce(Vector2.right * launchForce);
