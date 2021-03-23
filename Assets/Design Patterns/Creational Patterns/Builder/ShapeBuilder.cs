@@ -1,5 +1,4 @@
-public interface ShapeBuilder
-{
+public interface ShapeBuilder {
     // 1. Define point of the shape
     // 2. Size of the shape
     // 3. Material and mass
@@ -13,18 +12,22 @@ public interface ShapeBuilder
 public class CustomShapeBuilder : ShapeBuilder {
     BuilderProduct product = new BuilderProduct();
 
-    public void BuildPoints(int numOfPoints) {
-        // GUIConsole.Instance.Log($"{this}: building shape with ");
+    public void BuildName(string name) {
+        product.Name = name;
+    }
 
+    public void BuildPoints(int numOfPoints) {
+        product.Points = numOfPoints;
     }
 
     public void BuildSize(float sizeInUnits) {
-
+        product.Size = sizeInUnits;
     }
 
     public void BuildMaterial(string material, float mass) {
-
-    }
+        product.Material = material;
+        product.Mass = mass;
+    }   
 
     public BuilderProduct GetProduct () {
         return product;
@@ -39,6 +42,7 @@ public class Director {
     private CustomShapeBuilder builder;
 
     public void BuildCrate (int sizeInUnits) {
+
         builder.BuildPoints(4);
         builder.BuildSize(sizeInUnits);
         builder.BuildMaterial("Wood", 5);
