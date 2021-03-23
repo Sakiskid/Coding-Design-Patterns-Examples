@@ -5,7 +5,7 @@ class PrototypeBall : ICloneable
 {
     SpriteRenderer spriteRenderer;
 
-    private float red, green, blue;
+    private float red, green, blue, mass;
     private int launchForce = 5;
 
     // Violating DRY here over these update color methods, but for the sake of this example this decreases complexity and prevents any accidental string inputs
@@ -23,6 +23,10 @@ class PrototypeBall : ICloneable
     public void UpdateGreenColor(Slider slider) {
         green = slider.value;
         UpdateColor();
+    }
+
+    public void UpdateMass(Slider slider) {
+        mass = slider.value;
     }
 
     // Get references to components
@@ -56,6 +60,7 @@ class PrototypeBall : ICloneable
         GameObject newBall = Instantiate(this.gameObject, gameObject.transform.position, Quaternion.identity);
         Rigidbody2D newBallRb2d = newBall.GetComponent<Rigidbody2D>();
         newBallRb2d.simulated = true;
-        newBallRb2d.AddForce(Vector2.right * launchForce, ForceMode2D.Impulse);
+        newBallRb2d.AddForce(Vector2.right * launchForce);
+        newBallRb2d.mass = mass;
     }
 }
