@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace DesignPatterns.Builder {
-    public class BuilderClient : MonoBehaviour
+    public class Client : MonoBehaviour
     {
         [SerializeField] Slider sizeSlider;
 

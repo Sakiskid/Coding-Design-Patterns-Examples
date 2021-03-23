@@ -9,7 +9,7 @@ namespace DesignPatterns.Builder {
         void ListDetails();
     }
 
-    public class BuilderProduct : IBuilderProduct {
+    public class Shape : IBuilderProduct {
         public string Name { get; set;}
         public int Points { get; set; }
         public float Size { get; set; }

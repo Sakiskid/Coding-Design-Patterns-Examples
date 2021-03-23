@@ -12,7 +12,7 @@ namespace DesignPatterns.Builder {
     }
 
     public class CustomShapeBuilder : IShapeBuilder {
-        BuilderProduct product = new BuilderProduct();
+        Shape product = new Shape();
 
         public void BuildName(string name) {
             product.Name = name;
@@ -31,12 +31,12 @@ namespace DesignPatterns.Builder {
             product.Mass = mass;
         }   
 
-        public BuilderProduct GetProduct () {
+        public Shape GetProduct () {
             return product;
         }
 
         private void Reset () {
-            product = new BuilderProduct();
+            product = new Shape();
         }   
     }
 
