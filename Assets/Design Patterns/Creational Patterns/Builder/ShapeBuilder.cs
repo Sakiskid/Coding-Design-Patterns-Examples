@@ -1,15 +1,16 @@
-public interface ShapeBuilder {
+public interface IShapeBuilder {
     // 1. Define point of the shape
     // 2. Size of the shape
     // 3. Material and mass
 
     /// <summary>Build size and amount of points the shape has</summary>
+    void BuildName(string name);
     void BuildPoints(int numOfPoints);
     void BuildSize(float sizeInUnits);
     void BuildMaterial(string material, float mass);
 }
 
-public class CustomShapeBuilder : ShapeBuilder {
+public class CustomShapeBuilder : IShapeBuilder {
     BuilderProduct product = new BuilderProduct();
 
     public void BuildName(string name) {
@@ -39,18 +40,23 @@ public class CustomShapeBuilder : ShapeBuilder {
 }
 
 public class Director {
-    private CustomShapeBuilder builder;
+    public IShapeBuilder Builder { get; set; }
+
+    public void ChangeBuilder (IShapeBuilder builder) {
+        Builder = builder;
+    }
 
     public void BuildCrate (int sizeInUnits) {
-
-        builder.BuildPoints(4);
-        builder.BuildSize(sizeInUnits);
-        builder.BuildMaterial("Wood", 5);
+        Builder.BuildName("Crate");
+        Builder.BuildPoints(4);
+        Builder.BuildSize(sizeInUnits);
+        Builder.BuildMaterial("Wood", 5);
     }
 
     public void BuildStopsign (int sizeInUnits) {
-        builder.BuildPoints(8);
-        builder.BuildSize(sizeInUnits);
-        builder.BuildMaterial("Metal", 2);
+        Builder.BuildName("Stop Sign");
+        Builder.BuildPoints(8);
+        Builder.BuildSize(sizeInUnits);
+        Builder.BuildMaterial("Metal", 2);
     }
 }
