@@ -8,30 +8,36 @@ class PrototypeBall : ICloneable
     private float red, green, blue, mass;
     private int launchForce = 5;
 
+    // Get references to components
+    private void Awake() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     // Violating DRY here over these update color methods, but for the sake of this example this decreases complexity and prevents any accidental string inputs
 
+    /// <summary>Update the color of the PrototypeBall that is to be cloned.</summary>
+    /// <param name="slider">Which Unity Slider will control this color?</param>
     public void UpdateRedColor(Slider slider) {
         red = slider.value;
         UpdateColor();
     }
 
+    /// <inheritdoc cref="UpdateRedColor" />
     public void UpdateBlueColor(Slider slider) {
         blue = slider.value;
         UpdateColor();
     }
 
+    /// <inheritdoc cref="UpdateRedColor" />
     public void UpdateGreenColor(Slider slider) {
         green = slider.value;
         UpdateColor();
     }
 
+    /// <summary>Update the Mass of the PrototypeBall that is to be cloned.</summary>
+    /// <param name="slider">Which Unity Slider will control the mass of this object?</param>
     public void UpdateMass(Slider slider) {
         mass = slider.value;
-    }
-
-    // Get references to components
-    private void Awake() {
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     /// <summary>Updated whenever Red, Green, or Blue is changed. Sets the color of the sprite. </summary>
@@ -40,6 +46,7 @@ class PrototypeBall : ICloneable
         spriteRenderer.color = newColor;
     }
 
+    /// <summary>Clones the PrototypeBall</summary>
     protected override void ShallowCopy() {
         /* It is my understanding that in Unity C#, there are built in prototype methods (C# has MemberwiseClone, Unity has Instantiation). 
         The following method clones them in a purposefully bulkier way for the purpose of this exercise. 
