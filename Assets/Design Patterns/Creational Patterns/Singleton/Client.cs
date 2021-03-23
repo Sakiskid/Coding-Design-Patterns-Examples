@@ -1,17 +1,25 @@
+
 using UnityEngine;
+using System.Collections;
+using System.Threading;
 namespace DesignPatterns.Singleton {
     public class Client : MonoBehaviour
     {
-        // Start is called before the first frame update
+        private IEnumerator coroutine;
+
         void Start()
         {
-            Singleton.GetInstance(5);
+            // Assign coroutine to IEnumerator method
+            coroutine = GetSingletonAndAddValue(3, 3);
+            StartCoroutine(coroutine);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            
+        public static IEnumerator GetSingletonAndAddValue(int value, int interval) {
+            while (true) {
+                GUIConsole.Instance.Log($"Client: Retreiving Singleton instance: \n\t{Singleton.GetInstance()} \n\tAdding to Singleton in {interval} seconds...");
+                yield return new WaitForSecondsRealtime(interval);
+                Singleton.AddValue(value);
+            }
         }
     }
 }

@@ -33,14 +33,14 @@ public class GUIConsole : MonoBehaviour
     /// <param name="text">The text to be displayed in the GUIConsole</param>
     public void Log(string text) {
         // New Line for each log
-        text += "\n";
+        text += "\n\n";
         // Insert text to be logged
         consoleText = consoleText.Insert(0, text);
         // Insert timestamp and trim it down. If script just initialized, then don't remove
         if (Time.timeAsDouble == 0) {
-            consoleText = consoleText.Insert(0, "Time: " + Time.timeAsDouble.ToString());
+            consoleText = consoleText.Insert(0, "> Time: " + Time.timeAsDouble.ToString() + "\n ");
         } else {
-            consoleText = consoleText.Insert(0, "Time: " + Time.timeAsDouble.ToString().Remove(4) + "\n ");
+            consoleText = consoleText.Insert(0, "> Time: " + Time.timeAsDouble.ToString().Remove(4) + "\n ");
         }
         UpdateGUI();
     }
