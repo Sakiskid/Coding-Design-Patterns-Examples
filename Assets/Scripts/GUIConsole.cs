@@ -36,8 +36,12 @@ public class GUIConsole : MonoBehaviour
         text += "\n";
         // Insert text to be logged
         consoleText = consoleText.Insert(0, text);
-        // Insert timestamp and trim it down
-        consoleText = consoleText.Insert(0, "Time: " + Time.timeAsDouble.ToString().Remove(4) + "\n ");
+        // Insert timestamp and trim it down. If script just initialized, then don't remove
+        if (Time.timeAsDouble == 0) {
+            consoleText = consoleText.Insert(0, "Time: " + Time.timeAsDouble.ToString());
+        } else {
+            consoleText = consoleText.Insert(0, "Time: " + Time.timeAsDouble.ToString().Remove(4) + "\n ");
+        }
         UpdateGUI();
     }
 

@@ -11,9 +11,11 @@ namespace DesignPatterns.Singleton {
                 // This lock only allows ONE thread to access it at a time.
                 lock (_lock)
                 {
+                    GUIConsole.Instance.Log("Singleton: _lock: " + _lock); 
                     if (instance == null) {
                         instance = new Singleton();
                         instance.Value = value;
+                        GUIConsole.Instance.Log($"No Singleton found, creating new Singleton instance! \n\t Instance: {instance} \n\t Starting Value: {instance.Value}");
                     }
                 }
             }
