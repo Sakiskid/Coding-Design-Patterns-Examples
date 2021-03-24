@@ -40,7 +40,7 @@ namespace DesignPatterns.State {
     #region /////// Player States ///////
 
         // Player is standing
-    class StateStand : PlayerState {
+    class PlayerStateStand : PlayerState {
         public override void StandUp() {
             GUIConsole.Instance.Log("PlayerState (standing): Can't stand up any further! *struggles*");
             // Don't transition
@@ -48,28 +48,28 @@ namespace DesignPatterns.State {
 
         public override void LieDown() {
             GUIConsole.Instance.Log("PlayerState (standing): Gonna go ahead and crouch now.");
-            player.TransitionTo(new StateCrouch());
+            player.TransitionTo(new PlayerStateCrouch());
         }
     }
 
     // Player is crouching
-    class StateCrouch : PlayerState {
+    class PlayerStateCrouch : PlayerState {
         public override void StandUp() {
             GUIConsole.Instance.Log("PlayerState (crouching): Going to stand up now!");
-            player.TransitionTo(new StateStand());
+            player.TransitionTo(new PlayerStateStand());
         }
 
         public override void LieDown() {
             GUIConsole.Instance.Log("PlayerState (crouching): Laying down to take a nap.");
-            player.TransitionTo(new StateLaying());
+            player.TransitionTo(new PlayerStateLaying());
         }
     }
 
     // Player is laying
-    class StateLaying : PlayerState {
+    class PlayerStateLaying : PlayerState {
         public override void StandUp() {
             GUIConsole.Instance.Log("playerState (laying): Moving into a crouching position...");
-            player.TransitionTo(new StateCrouch());
+            player.TransitionTo(new PlayerStateCrouch());
         }
         
         public override void LieDown() {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class StateClient : MonoBehaviour
 {
-    Player player = new Player(new StateStand());
+    Player player = new Player(new PlayerStateStand());
     // These methods would normally be called from player input, or other sources (for example, if the player is forced to crouch)
 
     public void StandUp () {
