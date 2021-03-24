@@ -5,16 +5,32 @@ namespace DesignPatterns.Command {
     }
 
     public class Spawn : ICommand {
+        private CommandPlayer player;
+        private string location;
+
+        public Spawn (CommandPlayer player, string location) {
+            this.player = player;
+            this.location = location;
+        }
+
         public void Execute () {
-            GUIConsole.Instance.Log("");
+            GUIConsole.Instance.Log($"{player.GetPlayerName()} spawned at {location}.");
         }
     }
 
     // simple command
     public class HealSelf : ICommand
     {
+        private CommandPlayer player;
+        private int health;
+
+        public HealSelf (CommandPlayer player, int health) {
+            this.player = player;
+            this.health = health;
+        }
+
         public void Execute () {
-            GUIConsole.Instance.Log("");
+            GUIConsole.Instance.Log($"Healing {player.GetPlayerName()} with {health} health! <3");
         }
     }
 
@@ -28,12 +44,7 @@ namespace DesignPatterns.Command {
         }
 
         public void Execute () {
-            GUIConsole.Instance.Log("");
+            GUIConsole.Instance.Log($"{player.GetPlayerName()} has the flag!");
         }
-    }
-
-    // reciever
-    public class Flag {
-
     }
 }
