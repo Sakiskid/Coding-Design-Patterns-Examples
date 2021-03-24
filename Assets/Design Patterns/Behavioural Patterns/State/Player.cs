@@ -1,6 +1,6 @@
 namespace DesignPatterns.State {
 
-    internal class Player
+    class Player
     {
         private PlayerState state = null;
 
