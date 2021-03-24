@@ -14,7 +14,7 @@ namespace DesignPatterns.Command {
         }
 
         public void Execute () {
-            GUIConsole.Instance.Log($"{player.GetPlayerName()} spawned at {location}.");
+            GUIConsole.Instance.Log($"{player.GetPlayerName()} respawned at {location}.");
         }
     }
 
@@ -34,17 +34,19 @@ namespace DesignPatterns.Command {
         }
     }
 
-    // complex command
+    // complex commands are sent to a receiver
     public class CaptureFlag : ICommand {
+        private Flag flag;
         private CommandPlayer player;
 
         // Constructor for player reference
-        public CaptureFlag(CommandPlayer player) {
+        public CaptureFlag(Flag flag, CommandPlayer player) {
             this.player = player;
+            this.flag = flag;
         }
 
         public void Execute () {
-            GUIConsole.Instance.Log($"{player.GetPlayerName()} has the flag!");
+            flag.PickUp(player);
         }
     }
 }
