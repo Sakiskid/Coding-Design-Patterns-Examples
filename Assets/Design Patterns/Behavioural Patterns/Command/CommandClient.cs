@@ -1,25 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DesignPatterns.Command {
+    /// <summary>Client for the user to interact with. Sends new commands to the player to execute.
+    /// <remark>
+    /// Normally, this would be different classes calling these methods based on game logic.
+    /// For example, SpawnPlayer and CaptureFlag wouldn't actually be called from the GUI.
+    /// </remark>
+    /// </summary>
     public class CommandClient : MonoBehaviour
     {
-        [SerializeField] private string playerName = "Tyler";
-        Flag flag;
-        CommandPlayer player;
+        Flag flag = new Flag();
+        CommandPlayer player = new CommandPlayer("Tyler");
 
-        private void Awake() {
-            flag = new Flag();
-            player = new CommandPlayer(playerName);
-        }
+        // These methods all send commands to the player.
 
         public void SpawnPlayer () {
             player.Execute(new Spawn(this.player, "Red Team HQ"));
         }
 
         public void HealPlayer () {
-            player.Execute(new HealSelf(this.player, 100));
+            player.Execute(new Heal(this.player, 100));
         }
 
         public void CaptureFlag () {
